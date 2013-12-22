@@ -21,7 +21,7 @@ JSON Struct Checker
 
 注意：当使用require调用时，将不在window域产生JSONStructChecker函数。
 
-# 3. DEMO
+# 3. 示例
     var schema = { name : 'string' };
     var data1 = { name : 'MK' };
     var data2 = { };

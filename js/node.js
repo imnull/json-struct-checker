@@ -98,14 +98,6 @@ function JSONStructChecker(schema, target, log, namespace){
 	return true;
 }
 
-console.log(this)
-
-if(isFunction(this.define)){
-	//define by require
-	define(JSONStructChecker);
-} else {
-	//regist to window
-	this.JSONStructChecker = JSONStructChecker;
-}
+exports.JSONCheck = JSONStructChecker;
 
 })()
