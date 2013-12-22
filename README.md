@@ -65,29 +65,28 @@ JSON Struct Checker
   var data2 = { age : -1 };
 
 ## 3.3 嵌套判断
-### 代码块
-  var schema = {
-    child : {
-      name : 'string',
-      age : 'number',
-      wife : '^(undefined|[object Object])&'
-    }
-  }
-  var data1 = {
-    child : {
-      name : 'Even',
-      age : 6
-    }
-  }
-  var data2 = {
-    child : {
-      name : 'John',
-      age : 55,
-      wife : {
-        //...
+    var schema = {
+      child : {
+        name : 'string',
+        age : 'number',
+        wife : '^(undefined|[object Object])&'
       }
     }
-  }
+    var data1 = {
+      child : {
+        name : 'Even',
+        age : 6
+      }
+    }
+    var data2 = {
+      child : {
+        name : 'John',
+        age : 55,
+        wife : {
+          //...
+        }
+      }
+    }
 
 ## 4. 特殊字符
 ### 4.1 特殊类型字符
