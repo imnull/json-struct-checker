@@ -11,13 +11,13 @@ JSON Struct Checker
   然后在window域调用 JSONStructChecker 
   
 ## 2.2 AMD标准导入：
-  \<script type="text/javascript"\>
+    \<script type="text/javascript"\>
     
-    require(['path/json-struct-checker'], , function(jChecker){
-      //...
-    });
+      require(['path/json-struct-checker'], , function(jChecker){
+        //...
+      });
 
-  \</script\>
+    \</script\>
 
 注意：当使用require调用时，将不在window域产生JSONStructChecker函数。
 
