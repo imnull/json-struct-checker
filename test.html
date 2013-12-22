@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="js/json-struct-checker.js"></script>
+</head>
+<body>
+<table>
+	<tr>
+		<th>Schema</th>
+		<th>Data</th>
+		<th>Result</th>
+	</tr>
+	<tr>
+		<td valign="top">
+<textarea rows="20" cols="40" id="schema">
+{
+	name : 'string',
+	gender : /number|undefined/,
+	age : function(v, log, ns){
+		if(typeof(v) != 'number'){
+			log[2] = 'age type error';
+			return false;
+		} else if(v < 0 || v > 120) {
+			log[2] = 'age out range';
+			return false;
+		}
+		return true;
+	},
+	wife : {
+		name : 'string',
+		age : /number|undefined/
+	},
+	children : '@'
+}
+</textarea>
+		</td>
+		<td valign="top">
+<textarea rows="20" cols="40" id="json">
+{
+	name: "MK",
+	age: 1,
+	gender: 1,
+	wife: {
+		name:"Li"
+	},
+	children : {
+		name:"Yuan",
+		age: 6,
+		wife: {
+			name:"?"
+		}
+	}
+} 
+</textarea>
+		</td>
+		<td valign="top">
+<textarea rows="20" cols="40" id="log" disabled=""></textarea>
+		</td>
+	</tr>
+</table>
+
+
+
+
+<script type="text/javascript">
+
+var json_input = document.getElementById('json');
+var schema_input = document.getElementById('schema');
+var log_input = document.getElementById('log');
+
+function explain(logs){
+	var s = '';
+	for(var i = 0, len = logs.length; i < len; i++){
+		var log = logs[i];
+		s += 'namespace \t: ' + log[0]
+			+ '\nschema-state \t: ' + log[1]
+			// + '\n--------------------------------------'
+			+ '\ndata-state \t: ' + log[2]
+			// + '\nschema \t\t: ' + log[3]
+			+ '\ndata \t\t\t: ' + log[4]
+			// + '\n--------------------------------------'
+			+ '\n--------------------------------------\n'
+			;
+	}
+	return s;
+}
+
+function check(){
+	try{
+		var data = eval('(' + json_input.value + ')');
+		var schema = eval('(' + schema_input.value + ')');
+		var log = [];
+		var result = JSONStructChecker(schema, data, log, '');
+		log_input.value = 'check ' + (result ? 'success' : 'failed:') + '\n' + explain(log);
+		log = null;
+
+	} catch(ex){
+		log_input.value = 'JSON parse failed';
+	}
+}
+
+
+(json_input.onkeyup = schema_input.onkeyup = check)();
+
+</script>
+
+</body>
+
+</html>
