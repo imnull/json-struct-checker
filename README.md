@@ -8,7 +8,7 @@ JSON Struct Checker
 # 2. 使用方法
 ## 2.1 直接引入页面：
   \<script type="text/javascript" src="js/json-struct-checker.js"\>\</script\>
-然后在window域调用 JSONStructChecker 
+  然后在window域调用 JSONStructChecker 
   
 ## 2.2 AMD标准导入：
   \<script type="text/javascript"\>
@@ -23,21 +23,14 @@ JSON Struct Checker
 
 # 3. DEMO
   var schema = { name : 'string' };
-
   var data1 = { name : 'MK' };
-
   var data2 = { };
-
   var data3 = { name : 1 };
-
   var data4 = { name : null };
 
   console.log( JSONStructChecker( schema, data1 ) );
-
   console.log( JSONStructChecker( schema, data2 ) );
-
   console.log( JSONStructChecker( schema, data3 ) );
-
   console.log( JSONStructChecker( schema, data4 ) );
 
 
