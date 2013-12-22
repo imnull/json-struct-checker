@@ -51,7 +51,7 @@ JSON Struct Checker
 ## 3.2 函数对值的判断
     var schema = {
       age : function(val){
-        return typeof(val) == 'number' && val \>= 0 && val \<= 120;
+        return typeof(val) == 'number' && val >= 0 && val <= 120;
       }
     };
 
@@ -63,7 +63,7 @@ JSON Struct Checker
       child : {
         name : 'string',
         age : 'number',
-        wife : '^(undefined|[object Object])&'
+        wife : '^(undefined|\[object Object\])$'
       }
     }
     var data1 = {
@@ -82,17 +82,17 @@ JSON Struct Checker
       }
     }
 
-## 4. 特殊字符
-### 4.1 特殊类型字符
-#### 4.1.1 "*" 允许所有类型
+# 4. 特殊字符
+## 4.1 特殊类型字符
+### 4.1.1 "*" 允许所有类型
 
     var schema = { style : '*' };
     var data1 = { style : "width:20px" };
     var data2 = { style : { width : '20px' } }
     var data3 = {};
 
-### 4.2 特殊引用字符
-#### 4.2.1 "@" 对上一级schema的引用
+## 4.2 特殊引用字符
+### 4.2.1 "@" 引用父级schema进行检测
 
     var schema = {
       name : 'string',
