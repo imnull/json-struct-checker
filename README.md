@@ -5,6 +5,8 @@ JSON Struct Checker
 在编程过程中，可以通过编写一个JSON结构的Schema，来表示你所预期的数据结构，然后使用该函数对目标进行检查。
 函数会返回Boolean类型的检查结果；如果检查未通过，函数会形成一个Array结构的日志文件供调试审阅。
 
+用于NodeJS的Repo地址：[https://github.com/imnull/jsonchk](https://github.com/imnull/jsonchk)
+
 # 2. 使用方法
 ## 2.1 直接引入页面：
     <script type="text/javascript" src="js/json-struct-checker.js"></script>
@@ -12,7 +14,7 @@ JSON Struct Checker
   
 ## 2.2 AMD标准导入：
     <script type="text/javascript">
-      require(['path/json-struct-checker'], , function(jChecker){
+      require(['path/json-struct-checker'], function(jChecker){
 
         //...
 
